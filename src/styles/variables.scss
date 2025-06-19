@@ -1,0 +1,45 @@
+@use "sass:color";
+
+$primary-color: #F1B13E;
+$secondary-color: #FFA629;
+$invalid-color: #F24822;
+
+$background-color: #FFFFFF;
+$caption-text-color: #222222;
+$heading-text-color: #1C1A3C;
+$text-color: #666666;
+
+$padding-x: 16px;
+$padding-y: 8px;
+$padding: $padding-y $padding-x;
+
+$flex-gap: 8px;
+
+$border-color: #E0E0E0;
+$border-radius: 16px;
+$border: $border-color 1px solid;
+
+$shadow-color: rgba(0, 0, 0, 0.2);
+$shadow-offset: 2px;
+$shadow: $shadow-color 0 $shadow-offset calc($shadow-offset * 2);
+
+$primary-background-color: #FFEFD6;
+
+$button-text-color: #FFFFFF;
+// TODO: изменить название на более подходящее
+$button-background-color: #FFFFFF;
+
+$navbar-background-color: #F5F5F5;
+
+$elements-background-color: #F6F6F6;
+
+$outline-color: #D8D8D8;
+
+// TODO: разные цвета для разных оценок
+$score-color: #D28E3D;
+
+$settings-icons-circle-background-color: #FFEFD6;
+$settings-icons-circle-color: #E8A53A;
+
+$admin-navbar-backgorund-color: #86878C;
+$admin-navbar-selected-backgorund-color: #A4A4A5;

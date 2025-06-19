@@ -1,9 +1,8 @@
 import React from "react";
 
-export function MainPage() {
+export function JournalPage({ }: {}) {
     return (
         <>
-            <h1>Main page</h1>
         </>
     );
 }

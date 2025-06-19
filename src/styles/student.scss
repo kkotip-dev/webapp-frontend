@@ -1,0 +1,366 @@
+@use "sass:color";
+
+@use "/src/styles/common" as *;
+@use "/src/styles/variables" as *;
+
+.call-schedule-container {
+    $padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc($flex-gap * 2);
+
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: $padding;
+
+    background: linear-gradient(270deg, $primary-color, $secondary-color);
+
+    border: $border;
+    border-radius: $border-radius;
+
+    text-align: center;
+
+    :not(button) {
+        background: transparent;
+        color: $background-color;
+    }
+}
+
+.week-selector-container {
+    display: flex;
+    flex-direction: row;
+    gap: $flex-gap;
+    justify-content: space-between;
+
+    width: 100%;
+
+    select {
+        width: 100%;
+        padding: $padding;
+
+        border: $border;
+        border-radius: $border-radius;
+    }
+}
+
+.day-selector-container {
+    display: flex;
+    flex-direction: row;
+    gap: $flex-gap;
+
+    flex-shrink: 0;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    max-width: 100%;
+
+    * {
+        user-select: none;
+    }
+
+    .day-select {
+        display: flex;
+        flex-direction: column;
+        gap: $flex-gap;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: $padding;
+
+        height: 100%;
+        width: 100%;
+
+        border: $border-color 2px solid;
+        border-radius: $border-radius;
+
+        background-color: $elements-background-color;
+
+        text-align: center;
+
+        cursor: pointer;
+
+        * {
+            width: fit-content;
+
+            background-color: transparent;
+        }
+
+        &:hover {
+            background-color: $background-color;
+        }
+    }
+
+    .day-select.day-selected {
+        border-color: $primary-color;
+        background-color: $primary-background-color;
+
+        * {
+            color: $primary-color;
+            background-color: $primary-background-color;
+        }
+    }
+}
+
+.schedule-day-lessons-container {
+    $border-size: 3px;
+
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    .schedule-lessons-container {
+        display: flex;
+        flex-direction: column;
+        gap: $flex-gap;
+
+        padding: $padding-y $padding-y;
+
+        border: $elements-background-color $border-size solid;
+        border-radius: $border-radius;
+
+        .schedule-lesson {
+            display: flex;
+            flex-direction: row;
+            gap: $flex-gap;
+            align-items: stretch;
+
+            min-height: 77px;
+
+            padding: $padding;
+
+            border-radius: calc($border-radius - (6px * ($border-radius / 16px)));
+
+            background-color: $elements-background-color;
+
+            * {
+                color: $text-color;
+                background-color: $elements-background-color;
+            }
+
+            *:has(+ .flex-divider) {
+                width: 100%;
+            }
+
+            .lesson-call-number {
+                align-self: center;
+            }
+
+            .schedule-lesson-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+
+            .schedule-lesson-time {
+                padding: $padding;
+                text-wrap: nowrap;
+            }
+        }
+    }
+
+    .schedule-lessons-container.lesson-current {
+        border: $primary-color $border-size solid;
+
+        .schedule-lesson {
+            display: flex;
+            flex-direction: row;
+            gap: $flex-gap;
+
+            padding: $padding;
+
+            background-color: $primary-background-color;
+
+            * {
+                color: $primary-color;
+                background-color: $primary-background-color;
+            }
+
+            *:has(+ .flex-divider) {
+                width: 100%;
+            }
+
+            .schedule-lesson-time {
+                text-wrap: nowrap;
+            }
+        }
+    }
+}
+
+
+.journal-entries-container {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    width: 100%;
+}
+
+.journal-entry-container {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    width: 100%;
+
+    padding: $padding;
+
+    border-bottom: $primary-color 5px solid;
+    border-radius: $border-radius;
+
+    background-color: $elements-background-color;
+
+
+    * {
+        line-height: 1.5;
+        background-color: transparent;
+    }
+
+    h3 {
+        color: $heading-text-color;
+    }
+
+    span {
+        display: flex;
+        flex-direction: row;
+        gap: $flex-gap;
+
+        align-items: center;
+    }
+}
+
+.profile-header-container {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    width: 100%;
+
+    border: $border;
+    border-radius: $border-radius;
+
+    padding: $padding;
+
+    .profile-photo-name-container {
+        display: flex;
+        flex-direction: column;
+        gap: $flex-gap;
+
+        align-items: center;
+
+        width: 100%;
+    }
+
+    .profile-quick-info-container {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-evenly;
+
+        height: 100%;
+
+        .profile-quick-info {
+            * {
+                line-height: 1.2;
+            }
+
+            .profile-settings-button {
+                font-weight: 600;
+                background-color: $elements-background-color;
+            }
+        }
+    }
+}
+
+.profile-average-scores-container {
+    display: flex;
+    flex-direction: row;
+    gap: $flex-gap;
+
+    width: 100%;
+
+    flex-shrink: 0;
+
+    border: $border;
+    border-radius: $border-radius;
+
+    padding: $padding;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .profive-average-score-container {
+        display: flex;
+        flex-direction: column;
+        gap: $flex-gap;
+
+        width: 70px;
+
+        align-items: center;
+
+        .score {
+            padding: $padding-x;
+
+            width: 70px;
+            height: 70px;
+
+            font-size: 32px;
+            font-weight: 600;
+
+            border: $border;
+            border-radius: $border-radius;
+
+            color: $score-color;
+            background-color: $elements-background-color;
+        }
+
+        * {
+            text-align: center;
+            text-wrap: wrap;
+        }
+    }
+}
+
+.profile-last-scores-container {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .profile-last-score-container {
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: space-between;
+
+        border: $border;
+        border-radius: $border-radius;
+
+        padding: $padding;
+
+        .score {
+            font-size: 24px;
+            font-weight: 600;
+            color: $score-color;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .schedule-page-container,
+    .journal-page-container,
+    .profile-page-container {
+        min-width: unset;
+        width: 100%;
+
+        padding: $padding;
+    }
+}

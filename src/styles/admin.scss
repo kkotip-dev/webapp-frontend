@@ -1,0 +1,28 @@
+@use "sass:color";
+
+@use "/src/styles/common" as *;
+@use "/src/styles/variables" as *;
+
+.admin-navbar-container {
+    >.link {
+        color: $background-color;
+        border-radius: $border-radius;
+        background-color: $admin-navbar-backgorund-color;
+
+        &.selected {
+            background-color: $admin-navbar-selected-backgorund-color;
+        }
+
+        &:hover {
+            background-color: color.mix($admin-navbar-backgorund-color, $admin-navbar-selected-backgorund-color, 50%);
+        }
+    }
+}
+
+.ant-segmented-group {
+    >:not(.ant-segmented-item-selected) {
+        .add-group-segmented {
+            color: var(--var-primary-color);
+        }
+    }
+}

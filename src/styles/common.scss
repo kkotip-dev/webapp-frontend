@@ -1,0 +1,496 @@
+@use "sass:color";
+@use "variables" as *;
+
+* {
+    --var-background-color: #{$background-color};
+    --var-primary-color: #{$primary-color};
+    --var-text-color: #{$text-color};
+
+    --var-button-text-color: #{$button-text-color};
+
+    --var-padding: #{$padding};
+
+    --var-border-radius: #{$border-radius};
+    --var-border-color: #{$border-color};
+    --var-border: #{$border};
+
+    --var-flex-gap: #{$flex-gap};
+    --var-outline-color: #{$outline-color};
+
+    --var-settings-icons-circle-background-color: #{$settings-icons-circle-background-color};
+    --var-settings-icons-circle-color: #{$settings-icons-circle-color};
+
+    --var-admin-navbar-backgorund-color: #{$admin-navbar-backgorund-color};
+    --var-admin-navbar-selected-backgorund-color: #{$admin-navbar-selected-backgorund-color};
+}
+
+* {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+
+    box-sizing: border-box;
+}
+
+#app {
+    background-color: transparent;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+
+    color: $caption-text-color;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+
+    color: $caption-text-color;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+
+    color: $caption-text-color;
+}
+
+h4 {
+    font-weight: 500;
+
+    color: $text-color;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 400;
+
+    color: $text-color;
+}
+
+h6 {
+    color: color.mix($text-color, $background-color, 40%);
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+
+    background-color: transparent;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+}
+
+svg {
+    flex-shrink: 0;
+}
+
+select {
+    background-color: $background-color;
+}
+
+*:not([class^=ant])>input {
+    padding: $border-radius $border-radius;
+
+    color: $caption-text-color;
+
+    border: none;
+    outline: $border;
+    border-radius: $border-radius;
+
+    &.loading {
+        outline-width: 2px;
+        outline-color: $primary-color;
+    }
+
+    &.invalid {
+        outline-width: 2px;
+        outline-color: $invalid-color;
+    }
+}
+
+*[class^=ant]>*:not([class^=ant]) {
+    color: inherit;
+    transition: all 0.2s ease-out;
+}
+
+button:not([class^=ant]) {
+    width: 100%;
+
+    padding: $border-radius $border-radius;
+
+    border: none;
+    border-radius: $border-radius;
+
+    outline: $border;
+
+    background-color: $button-background-color;
+
+    cursor: pointer;
+}
+
+.ant-otp-input-wrapper {
+    input {
+        padding: $border-radius 0 !important;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+.error-text {
+    color: $invalid-color;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: row;
+    gap: $flex-gap;
+
+    justify-content: center;
+
+    width: 100%;
+}
+
+.flex-even {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.inline-label {
+    box-sizing: content-box;
+    text-align: left;
+
+    label {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+
+        justify-items: center;
+
+        position: absolute;
+        z-index: 1;
+
+        margin-top: calc($border-radius / 2);
+        margin-left: $border-radius;
+
+        user-select: none;
+
+        line-height: 1.3;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            line-height: 1;
+        }
+
+        span {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    }
+
+    input {
+        position: relative;
+        padding-top: calc($border-radius * 1.5 + 20px);
+    }
+}
+
+.inline-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    align-content: center;
+
+    :first-child {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    :not(:first-child) {
+        font-size: 20px;
+    }
+}
+
+.divider {
+    margin: $padding;
+    border-bottom: $border;
+}
+
+.flex-divider {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-outlined {
+    padding: $padding-y;
+
+    border-radius: $border-radius;
+
+    background-color: $background-color !important;
+}
+
+$navbar-height: 58px;
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: row;
+    gap: $flex-gap;
+
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: $padding;
+
+    border-bottom: $border;
+
+    background-color: $navbar-background-color;
+
+    height: $navbar-height;
+
+    * {
+        align-self: center;
+
+        background-color: $navbar-background-color;
+    }
+}
+
+.main-page-container {
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    top: $navbar-height;
+
+    width: 100%;
+    height: calc(100vh - $navbar-height);
+}
+
+
+.tabs-container {
+    $hover-background-color: color.mix($border-color, $background-color, 70%);
+
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    width: fit-content;
+    padding: $padding;
+
+    border-right: $border;
+
+    a {
+        padding: $padding;
+        color: $text-color;
+
+        border: none;
+        border-radius: $border-radius;
+
+        outline: $border-color;
+
+        &:hover,
+        &.active {
+            outline: $border-color 2px solid;
+            color: $text-color;
+
+            text-decoration: none;
+            background-color: $hover-background-color;
+
+            * {
+                background-color: $hover-background-color;
+            }
+
+        }
+    }
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap;
+
+    min-width: 600px;
+    width: 650px;
+
+    padding: $padding-y 0;
+}
+
+.page-container-fullscreen {
+    width: 100%;
+}
+
+.tabs-container-minimized {
+    width: fit-content;
+    transition: all 0.2s ease-out;
+
+    * {
+        transition: all 0.2s ease-out;
+    }
+
+    &:hover {
+        .inline-icon {
+            span {
+                //display: block;
+                margin-left: $flex-gap !important;
+                opacity: 1;
+                max-width: 150px;
+            }
+        }
+    }
+
+    .inline-icon {
+        gap: 0;
+
+        span {
+            //display: none;
+            margin-left: 0 !important;
+            opacity: 0;
+            max-width: 0;
+
+            overflow: hidden;
+        }
+
+        *:not(:first-child) {
+            margin-left: $flex-gap;
+        }
+    }
+}
+
+.outlet-container {
+    display: flex;
+    justify-content: space-around;
+
+    overflow: overlay;
+    width: 100%;
+}
+
+.non-mobile-separate {
+    &::before {
+        content: " - ";
+    }
+}
+
+
+
+.ant-segmented-item {
+    margin-bottom: 4px;
+}
+
+.ant-segmented-item:last-child {
+    margin-bottom: 0;
+}
+
+
+
+@media screen and (max-width: 870px) {
+    .tabs-container {
+        .inline-icon {
+            span {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .navbar-container {
+        display: none;
+    }
+
+    .main-page-container {
+        flex-direction: column-reverse;
+
+        top: 0;
+        height: 100%;
+    }
+
+    .outlet-container {
+        height: 100%;
+    }
+
+    .page-container {
+        min-width: unset;
+        width: 100%;
+
+        padding: $padding;
+    }
+
+    .tabs-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+
+        border-top: $border;
+
+        * {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+
+    .flex-divider {
+        flex-shrink: 2;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .mobile-column {
+        display: flex;
+        flex-direction: column;
+
+        * {
+            line-height: 1.3;
+        }
+    }
+
+    .non-mobile-separate {
+        &::before {
+            content: "";
+        }
+    }
+}
